@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <mat-toolbar style="background-color: #4b4bf4; color: white">
+      <div *ngIf="isLoggedIn == false" class="col-md-4 md-3">To Do App</div>
+      <div *ngIf="isLoggedIn == true" class="col-md-4 md-3">
+        <a routerLink="/todo" style="color: white">ToDO</a>
+      </div>
+      <div *ngIf="isLoggedIn == true" class="col-md-2 md-3">
+        <a routerLink="/users" style="color: white">User Admin </a>
+      </div>
+
+      <div *ngIf="isLoggedIn == true" class="col-md-4 md-3">
+        Hello, {{ this.fullname }}
+      </div>
+      <div *ngIf="isLoggedIn == true" class="col-md-2 md-3">
+        <a (click)="logout()" style="color: white" routerLink="/logout"
+          >Logout</a
+        >
+      </div>
+    </mat-toolbar>
+  </div>
+</div>
