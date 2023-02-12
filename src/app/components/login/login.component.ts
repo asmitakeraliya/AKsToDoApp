@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       : (this.typePassOrText = 'Password');
   }
   onSubmit() {
-    console.log('Login clicked');
+   
 
     if (this.loginForm.valid) {
       this.usrService.login(this.loginForm.value).subscribe({
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
             'fullname',
             res.firstName + ' ' + res.lastName
           );
-          console.log('Login success');
+          
           this.router.navigate(['todo']);
         },
         error: (err) => {

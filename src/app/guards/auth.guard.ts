@@ -21,9 +21,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
     this.routeData = route.data;
-    let requiredRole = this.routeData.requiredRole;
-
-    console.log('reached to auth guard - required role' + requiredRole);
+    let requiredRole = this.routeData.requiredRole;    
 
     // Handling role based authorisation in the below switch case.
     switch (requiredRole) {
@@ -39,10 +37,7 @@ export class AuthGuard implements CanActivate {
           return false;
         }
         break;
-      case 'Admin':
-        console.log(
-          'Logged in user role - ' + this.authService.getValue('role')
-        );
+      case 'Admin':        
         if (
           this.authService.isLoggedIn() &&
           this.authService.getValue('role') == 'Admin'

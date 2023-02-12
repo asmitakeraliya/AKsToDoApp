@@ -111,8 +111,7 @@ export class TodoComponent implements OnInit {
       })
       .subscribe({
         next: (res) => {
-           this.translatedText = res.data.translations[0].translatedText;
-          
+          this.translatedText = res.data.translations[0].translatedText;
 
           //Record user translate activity into database
           this.translateLanguageService
@@ -168,6 +167,7 @@ export class TodoComponent implements OnInit {
 
     this.userTaskService.deleteUserTask(this.todotasks[i].id).subscribe({
       next: (res) => {
+        //Delete successful
         this.todotasks.splice(i, 1);
       },
       error: (err) => {
@@ -178,12 +178,26 @@ export class TodoComponent implements OnInit {
   deleteInProgressTask(i: number) {
     // remove clicked item
 
-    this.inprogress.splice(i, 1);
+    this.userTaskService.deleteUserTask(this.inprogress[i].id).subscribe({
+      next: (res) => {
+        //Delete successful
+        this.inprogress.splice(i, 1);
+      },
+      error: (err) => {
+        alert(err?.error.message);
+      },
+    });
   }
   deletedone(i: number) {
-    // remove clicked item
-
-    this.done.splice(i, 1);
+    this.userTaskService.deleteUserTask(this.done[i].id).subscribe({
+      next: (res) => {
+        //Delete successful
+        this.done.splice(i, 1);
+      },
+      error: (err) => {
+        alert(err?.error.message);
+      },
+    });
   }
 
   drop(event: CdkDragDrop<ITask[]>) {
@@ -208,7 +222,7 @@ export class TodoComponent implements OnInit {
 
       this.userTaskService.updateUserTask(this.taskToBeUpdated).subscribe({
         next: (res) => {
-          console.log('update successful');
+          //Update successful
         },
         error: (err) => {
           alert(err?.error.message);

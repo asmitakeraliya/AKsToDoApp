@@ -51,7 +51,7 @@ export class UsersComponent implements OnInit {
     'toLanguage',
     'toText',
     'translateDate',
-    'translateTime',
+    // 'translateTime',
   ];
 
   constructor(
@@ -69,10 +69,7 @@ export class UsersComponent implements OnInit {
           ...item,
           isExpanded: false,
         }));
-        this.dataSource.data = this.allUsers;
-
-        console.log('modified response - ' + JSON.stringify(this.allUsers));
-        console.log('datasource - ' + JSON.stringify(this.dataSource.data));
+        this.dataSource.data = this.allUsers;       
       },
       error: (err) => {
         alert(err?.error.message);

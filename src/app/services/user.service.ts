@@ -1,24 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private baseServiceURL: string = 'https://localhost:7039/User/';
+
   constructor(private http: HttpClient, private router: Router) {}
 
-  signup(signupUser: any) {
-    return this.http.post<any>(`${this.baseServiceURL}signup`, signupUser);
+  signup(signupUser: any) {    
+    return this.http.post<any>(`${environment.apiUrl}/User/signup`, signupUser);
   }
 
-  login(loginUser: any) {
-    return this.http.post<any>(`${this.baseServiceURL}authenticate`, loginUser);
+  login(loginUser: any) {    
+    return this.http.post<any>(
+      `${environment.apiUrl}/User/authenticate`,
+      loginUser
+    );
   }
 
-  getUsers() {
-    return this.http.get<any>(`${this.baseServiceURL}`);
+  getUsers() {    
+    return this.http.get<any>(`${environment.apiUrl}/User`);
   }
 
   signOut() {
