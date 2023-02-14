@@ -1,21 +1,32 @@
 <div class="container-fluid">
   <div class="row">
     <mat-toolbar style="background-color: #4b4bf4; color: white">
-      <div *ngIf="isLoggedIn == false" class="col-md-4 md-3">To Do App</div>
-      <div *ngIf="isLoggedIn == true" class="col-md-4 md-3">
-        <a routerLink="/todo" style="color: white">ToDO</a>
+      <div *ngIf="isLoggedIn == false" class="col-md-2 md-2">To Do App</div>
+      <div *ngIf="isLoggedIn == true" class="col-md-2 md-2">
+        <a
+          routerLink="/todo"
+          routerLinkActive="router-link-active"
+          style="color: white"
+          >ToDO</a
+        >
       </div>
-      <div *ngIf="isLoggedIn == true" class="col-md-2 md-3">
+      <div class="col-md-2 md-2">
+        <a routerLink="/home" style="color: white">Home </a>
+      </div>
+      <div *ngIf="isLoggedIn == true" class="col-md-2 md-2">
         <a routerLink="/users" style="color: white">User Admin </a>
       </div>
 
-      <div *ngIf="isLoggedIn == true" class="col-md-4 md-3">
-        Hello, {{ this.fullname }}
+      <div *ngIf="isLoggedIn == true" class="col-md-4 md-4">
+        Hello, {{ this.fullname }} - {{ this.role }}
       </div>
-      <div *ngIf="isLoggedIn == true" class="col-md-2 md-3">
+      <div *ngIf="isLoggedIn == true" class="col-md-2 md-2">
         <a (click)="logout()" style="color: white" routerLink="/logout"
           >Logout</a
         >
+      </div>
+      <div *ngIf="isLoggedIn == false" class="col-md-2 md-2">
+        <a style="color: white" routerLink="/login">Login</a>
       </div>
     </mat-toolbar>
   </div>

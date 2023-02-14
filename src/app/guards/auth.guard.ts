@@ -21,8 +21,9 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
     this.routeData = route.data;
-    let requiredRole = this.routeData.requiredRole;    
+    let requiredRole = this.routeData.requiredRole;
 
+    console.log('required role - ' + requiredRole);
     // Handling role based authorisation in the below switch case.
     switch (requiredRole) {
       case 'User':
@@ -33,23 +34,23 @@ export class AuthGuard implements CanActivate {
         ) {
           return true;
         } else {
-          this.router.navigate(['login']);
+          this.router.navigate(['unauthorised']);
           return false;
         }
         break;
-      case 'Admin':        
+      case 'Admin':
         if (
           this.authService.isLoggedIn() &&
           this.authService.getValue('role') == 'Admin'
         ) {
           return true;
         } else {
-          this.router.navigate(['login']);
+          this.router.navigate(['unauthorised']);
           return false;
         }
         break;
       default:
-        this.router.navigate(['login']);
+        this.router.navigate(['unauthorised']);
         return false;
         break;
     }

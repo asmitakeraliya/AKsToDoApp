@@ -20,6 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './components/users/users.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { UnauthorisedComponent } from './components/unauthorised/unauthorised.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LoginComponent,
     SignupComponent,
     UsersComponent,
+    UnauthorisedComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatPaginatorModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
