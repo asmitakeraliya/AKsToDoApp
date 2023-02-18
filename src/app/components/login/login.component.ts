@@ -41,13 +41,14 @@ export class LoginComponent implements OnInit {
       : (this.typePassOrText = 'Password');
   }
   onSubmit() {
-   
+    // Authenticating user credentials if form is valid
 
     if (this.loginForm.valid) {
       this.usrService.login(this.loginForm.value).subscribe({
         next: (res) => {
           this.loginForm.reset();
 
+          //Storing user profile data into local storage as key / value pairs
           this.usrService.storeKeyValue('userId', res.id);
           this.usrService.storeKeyValue('username', res.username);
           this.usrService.storeKeyValue('role', res.role);
@@ -55,7 +56,8 @@ export class LoginComponent implements OnInit {
             'fullname',
             res.firstName + ' ' + res.lastName
           );
-          
+
+          // Navigating to Todo page after succesful login
           this.router.navigate(['todo']);
         },
         error: (err) => {
