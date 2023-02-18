@@ -23,7 +23,6 @@ export class AuthGuard implements CanActivate {
     this.routeData = route.data;
     let requiredRole = this.routeData.requiredRole;
 
-    console.log('required role - ' + requiredRole);
     // Handling role based authorisation in the below switch case.
     switch (requiredRole) {
       case 'User':

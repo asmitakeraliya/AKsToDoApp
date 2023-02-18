@@ -17,7 +17,7 @@ describe('UnauthorisedComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Tested Simplest component', () => {
     expect(component).toBeTruthy();
   });
 });
