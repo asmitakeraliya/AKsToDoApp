@@ -93,7 +93,7 @@
       <!-- Translate Date Column -->
       <ng-container matColumnDef="translateDate">
         <th mat-header-cell *matHeaderCellDef>Translate Date</th>
-        <td mat-cell *matCellDef="let element">{{ element.translateDate }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.translateDate | date:'dd MM yyyy hh:mm:ss a'}}</td>
       </ng-container>
 
       <!-- Translate Time Column -->
